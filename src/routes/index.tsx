@@ -1,8 +1,9 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { z } from "zod";
-import { Crown, Send, ShieldCheck, Sparkles, CheckCircle2 } from "lucide-react";
+import { Crown, Send, ShieldCheck, Sparkles, CheckCircle2, Volume2 } from "lucide-react";
 import lionHero from "@/assets/lion-hero.jpg";
+import lionRoar from "@/assets/lion-roar.jpg";
 import { StarRating } from "@/components/StarRating";
 import { CATEGORIES, saveFeedback } from "@/lib/feedback-store";
 
