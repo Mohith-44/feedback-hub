@@ -37,6 +37,35 @@ function Home() {
   const [comments, setComments] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [done, setDone] = useState(false);
+  const [roaring, setRoaring] = useState(false);
+
+  function roar() {
+    setRoaring(true);
+    try {
+      const ctx = new (window.AudioContext || (window as any).webkitAudioContext)();
+      const o = ctx.createOscillator();
+      const g = ctx.createGain();
+      o.type = "sawtooth";
+      o.frequency.setValueAtTime(90, ctx.currentTime);
+      o.frequency.exponentialRampToValueAtTime(45, ctx.currentTime + 0.6);
+      g.gain.setValueAtTime(0.0001, ctx.currentTime);
+      g.gain.exponentialRampToValueAtTime(0.25, ctx.currentTime + 0.05);
+      g.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.7);
+      o.connect(g).connect(ctx.destination);
+      o.start();
+      o.stop(ctx.currentTime + 0.75);
+    } catch {}
+    window.setTimeout(() => setRoaring(false), 700);
+  }
+
+  useEffect(() => {
+    // Gentle idle blink — auto roar every 6s
+    const id = window.setInterval(() => {
+      setRoaring(true);
+      window.setTimeout(() => setRoaring(false), 500);
+    }, 6000);
+    return () => window.clearInterval(id);
+  }, []);
 
   function onSubmit(e: React.FormEvent) {
     e.preventDefault();
