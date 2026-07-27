@@ -127,14 +127,44 @@ function Home() {
             </div>
           </div>
           <div className="relative">
-            <div className="absolute -inset-8 rounded-full bg-primary/20 blur-3xl" />
-            <img
-              src={lionHero}
-              alt="Majestic 3D golden lion"
-              width={1536}
-              height={1024}
-              className="relative rounded-3xl border border-primary/20 object-cover shadow-[var(--shadow-deep)]"
+            <div
+              className={`absolute -inset-8 rounded-full blur-3xl transition-all duration-500 ${
+                roaring ? "bg-accent/50 scale-110" : "bg-primary/20"
+              }`}
             />
+            <button
+              type="button"
+              onClick={roar}
+              onMouseEnter={() => setRoaring(true)}
+              onMouseLeave={() => setRoaring(false)}
+              aria-label="Make the lion roar"
+              className={`group relative block w-full overflow-hidden rounded-3xl border border-primary/20 shadow-[var(--shadow-deep)] transition-transform duration-300 ${
+                roaring ? "scale-[1.02]" : "hover:scale-[1.01]"
+              }`}
+            >
+              <img
+                src={lionHero}
+                alt="Majestic 3D golden lion at rest"
+                width={1536}
+                height={1024}
+                className={`block h-full w-full object-cover transition-opacity duration-200 ${
+                  roaring ? "opacity-0" : "opacity-100"
+                }`}
+              />
+              <img
+                src={lionRoar}
+                alt="Majestic 3D golden lion roaring"
+                width={1536}
+                height={1024}
+                className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-200 ${
+                  roaring ? "opacity-100" : "opacity-0"
+                }`}
+              />
+              <span className="pointer-events-none absolute bottom-4 left-1/2 -translate-x-1/2 rounded-full bg-background/70 px-4 py-2 text-xs font-semibold uppercase tracking-widest text-primary backdrop-blur-md ring-1 ring-primary/40 flex items-center gap-2">
+                <Volume2 className="h-3.5 w-3.5" />
+                {roaring ? "ROAR!" : "Tap to roar"}
+              </span>
+            </button>
           </div>
         </div>
       </section>
