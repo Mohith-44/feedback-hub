@@ -77,7 +77,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { name: "description", content: "A lion-themed modern feedback collection app. Share ratings, comments, and manage insights in a regal admin dashboard." },
+      { name: "description", content: "A professional feedback collection platform. Submit ratings and comments, and manage insights in a clean admin dashboard." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
