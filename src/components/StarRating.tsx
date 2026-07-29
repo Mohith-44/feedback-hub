@@ -25,9 +25,7 @@ export function StarRating({
           <Star
             size={size}
             className={
-              n <= value
-                ? "fill-primary text-primary drop-shadow-[0_0_8px_oklch(0.82_0.17_80/0.6)]"
-                : "text-muted-foreground/40"
+              n <= value ? "fill-accent text-accent" : "text-muted-foreground/35"
             }
           />
         </button>
