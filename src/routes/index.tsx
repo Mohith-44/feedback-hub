@@ -283,7 +283,7 @@ function Home() {
 
               {/* Crown for 5 stars */}
               {mood.crown && (
-                <Crown className="pointer-events-none absolute left-1/2 top-4 h-12 w-12 -translate-x-1/2 text-primary drop-shadow-[0_0_12px_oklch(0.82_0.17_80/0.9)] lion-crown-in" />
+                <Crown className="pointer-events-none absolute left-1/2 top-4 h-12 w-12 -translate-x-1/2 text-accent lion-crown-in" />
               )}
 
               {/* Tear for 1 star */}
@@ -426,9 +426,9 @@ function Home() {
       <style>{`
         .input-royal {
           width: 100%;
-          background: oklch(0.18 0.02 60);
+          background: var(--color-input);
           border: 1px solid var(--color-border);
-          border-radius: 0.75rem;
+          border-radius: 0.625rem;
           padding: 0.75rem 1rem;
           color: var(--color-foreground);
           font-size: 0.95rem;
@@ -436,8 +436,8 @@ function Home() {
         }
         .input-royal:focus {
           outline: none;
-          border-color: var(--color-primary);
-          box-shadow: 0 0 0 3px oklch(0.78 0.16 75 / 0.2);
+          border-color: var(--color-ring);
+          box-shadow: 0 0 0 3px color-mix(in oklab, var(--color-ring) 22%, transparent);
         }
         @keyframes lion-shake {
           0%,100% { transform: translateX(0) rotate(0); }
